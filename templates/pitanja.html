@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitanja</title>
+</head>
+<body>
+    <h1>Pitanja iz odabrane oblasti</h1>
+    <form action="/proveri_odgovore" method="POST">
+        <ul>
+            {% for pitanje in pitanja %}
+                <li>
+                    <p>{{ pitanje.question }}</p>
+                    <input type="hidden" name="id" value="{{ pitanje.id }}">
+                    <label for="odgovor{{ pitanje.id }}">Odgovor:</label>
+                    <input type="text" id="odgovor{{ pitanje.id }}" name="odgovor{{ pitanje.id }}">
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Proveri odgovore</button>
+    </form>
+</body>
+</html>
